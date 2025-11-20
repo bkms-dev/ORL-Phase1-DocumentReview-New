@@ -258,117 +258,6 @@
       font-size: 7px;
     }
 
-    /* Confirmation bubble styles */
-    .confirmation-bubble {
-      position: absolute;
-      bottom: 50px;
-      left: 0;
-      background: #fff;
-      border: 1px solid #ccc;
-      padding: 12px 14px;
-      border-radius: 8px;
-      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
-      font-size: 14px;
-      z-index: 10;
-      width: 280px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      display: none;
-    }
-
-    .confirmation-bubble.show {
-      opacity: 1;
-      transform: translateY(0);
-      display: block;
-    }
-
-    .confirmation-bubble::after {
-      content: "";
-      position: absolute;
-      bottom: -24px;
-      left: 20px;
-      border-width: 12px;
-      border-style: solid;
-      border-color: #fff transparent transparent transparent;
-      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
-    }
-
-    .confirmation-bubble-right {
-      position: absolute;
-      bottom: 50px;
-      right: 0;
-      background: #fff;
-      border: 1px solid #ccc;
-      padding: 12px 14px;
-      border-radius: 8px;
-      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
-      font-size: 14px;
-      z-index: 10;
-      width: 280px;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      display: none;
-    }
-
-    .confirmation-bubble-right.show {
-      opacity: 1;
-      transform: translateY(0);
-      display: block;
-    }
-
-    .confirmation-bubble-right::after {
-      content: "";
-      position: absolute;
-      bottom: -24px;
-      right: 20px;
-      border-width: 12px;
-      border-style: solid;
-      border-color: #fff transparent transparent transparent;
-      filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.2));
-    }
-
-    /* Move Documents Section Styles */
-    .move-documents-section {
-      margin-top: 20px;
-      margin-bottom: 30px;
-      display: none;
-    }
-
-    .application-compare-row {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .application-compare-col {
-      flex: 0 1 auto;
-    }
-
-    /* Note row styles */
-    .note-row {
-      display: none;
-    }
-
-    .note-content {
-      font-size: 14px;
-      line-height: 1.5;
-      color: #333;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      background-color: #f5f5f5;
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-
-    .note-content.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     /* Enhanced button states */
     .btn-disabled {
       opacity: 0.6;
@@ -426,8 +315,8 @@
       </div>
       <div class="col-sm-12 stats" style="display:flex; gap:24px; align-items:center;">
         <span class="stat-item"><i class="bi bi-clock-fill stat-pending"></i> Pending: 2</span>
-        <span class="stat-item"><i class="bi bi-check-circle-fill stat-approved"></i> Approved: 3</span>
-        <span class="stat-item"><i class="bi bi-x-circle-fill stat-rejected"></i> Rejected: 3</span>
+        <span class="stat-item"><i class="bi bi-check-circle-fill stat-approved"></i> Approved: 1</span>
+        <span class="stat-item"><i class="bi bi-x-circle-fill stat-rejected"></i> Rejected: 1</span>
       </div>
     </div>
 
@@ -437,11 +326,11 @@
         <div style="background:#555555; color:#fff; padding:10px 14px; border-radius:3px 3px 0 0; font-weight:700;">
           <ul class="nav nav-tabs" role="tablist" style="border:none; margin:0;">
             <li role="presentation" class="active"><a href="#" style="color:#fff; border:none;">Pending (2)</a></li>
-            <li role="presentation"><a href="#" style="color:#fff; border:none;">Approved (3)</a></li>
-            <li role="presentation"><a href="#" style="color:#fff; border:none;">Rejected (3)</a></li>
+            <li role="presentation"><a href="#" style="color:#fff; border:none;">Approved (1)</a></li>
+            <li role="presentation"><a href="#" style="color:#fff; border:none;">Rejected (1)</a></li>
           </ul>
         </div>
-        <div style="padding:20px; background:#ffffff; min-height:600px;">
+        <div id="tabContentWrapper" style="padding:20px; background:#ffffff; min-height:600px;">
 
           <!-- Pending Tab Content -->
           <div id="pendingContent" style="display:block;">
@@ -594,367 +483,110 @@
 
           <!-- Approved Tab Content -->
           <div id="approvedContent" style="display:none;">
-            <div style="margin-bottom: 20px; text-align: right;">
-              <div style="position: relative; display: inline-block; margin-right: 10px;">
-                <button class="btn btn-default" id="moveDocumentsBtn" onclick="showMoveDocumentsBubble()" disabled
-                  style="border: 1px solid #337ab7; color: #337ab7; opacity: 0.6; background-color: #cce7ff; font-weight: bold;">Move
-                  Documents</button>
-                <!-- Move Documents Confirmation bubble -->
-                <div id="moveDocumentsBubble" class="confirmation-bubble" style="display:none;">
-                  <div id="moveDocumentsText">Move selected documents to another application?</div>
-                  <div style="margin-top: 10px; text-align: right;">
-                    <button class="btn btn-sm" style="background-color: #6c757d; color: white; margin-right: 5px;"
-                      onclick="cancelMoveDocuments()">Cancel</button>
-                    <button class="btn btn-sm" style="background-color: #5cb85c; color: white;"
-                      onclick="executeMoveDocuments()">Confirm</button>
-                  </div>
-                </div>
+
+            <!-- Card container -->
+            <div class="card" style="border:1px solid #ccc; border-radius:3px; margin-top:10px;">
+
+              <!-- Header -->
+              <div class="card-header"
+                style="background:#555555; color:white; padding:10px 14px; font-weight:700; font-size:14px;">
+                ORL
               </div>
-              <div style="position: relative; display: inline-block;">
-                <button class="btn btn-default" id="returnToFaxesBtn" onclick="showReturnToFaxesBubble()" disabled
-                  style="border: 1px solid #337ab7; color: #337ab7; opacity: 0.6; background-color: #cce7ff; font-weight: bold;">Return
-                  to
-                  Faxes/Pending
-                  Status</button>
-                <!-- Return to Faxes Confirmation bubble -->
-                <div id="returnToFaxesBubble" class="confirmation-bubble-right" style="display:none;">
-                  <div>Return selected documents to Faxes/Pending status?</div>
-                  <div style="margin-top: 10px; text-align: right;">
-                    <button class="btn btn-sm" style="background-color: #6c757d; color: white; margin-right: 5px;"
-                      onclick="cancelReturnToFaxes()">Cancel</button>
-                    <button class="btn btn-sm" style="background-color: #5cb85c; color: white;"
-                      onclick="executeReturnToFaxes()">Confirm</button>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <!-- Move Documents Section -->
-            <div id="moveDocumentsSection" class="move-documents-section">
-              <div style="background: white; border: 1px solid #ddd; border-radius: 4px; padding: 20px;">
-                <div style="margin-bottom: 15px;">
-                  <strong id="moveDocumentsTitle" style="font-size: 16px;">Move documents to a new application.</strong>
-                </div>
-                <div style="margin-bottom: 20px;">
-                  <div style="display: flex; gap: 10px; align-items: center;">
-                    <input type="text" class="form-control" id="targetApplicationId"
-                      placeholder="Enter Target Application ID" style="flex: 1;">
-                    <button class="btn btn-primary" onclick="validateApplication()"
-                      style="background-color: #337ab7; border-color: #337ab7;">Validate</button>
-                    <button class="btn btn-default" onclick="cancelMoveDocuments()">Cancel</button>
-                  </div>
+              <!-- Body -->
+              <div class="doc-entry" style="padding:14px; font-size:14px; position:relative;">
+
+                <!-- Left checkbox -->
+                <div style="display:inline-block; vertical-align:top; margin-right:10px;">
+                  <input type="checkbox" checked style="width:18px; height:18px; cursor:pointer;">
                 </div>
 
-                <!-- Application Comparison Section -->
-                <div id="applicationComparisonSection" style="display:none;">
+                <!-- Main Document Info -->
+                <div style="display:inline-block; width:90%;">
 
-                  <div class="application-compare-row">
+                  <a href="#" style="font-weight:700; color: black; text-decoration:underline;">
+                    Kelley - Adverse Action Letter
+                  </a>
 
-                    <!-- LEFT: CURRENT APP -->
-                    <div class="application-compare-col">
-                      <div style="font-weight: bold; font-size: 14px; margin-bottom: 15px;">
-                        Current App: <span id="currentAppId">5819998</span>
-                      </div>
+                  <span>, Page(s) 1 (</span>
+                  <span style="font-weight:700;">Received:</span>
+                  <span> 11-19-2025 11:00:45 PM )</span>
 
-                      <div style="margin-bottom: 15px;">
-                        <div style="font-weight: bold; margin-bottom: 8px;">Applicant Information:</div>
+                  <br>
 
-                        <div style="margin-bottom: 4px;">
-                          <strong>Name:</strong> <span id="currentAppName">Sbnzbd v Glmrlut</span>
-                        </div>
-
-                        <div style="margin-bottom: 15px;">
-                          <strong>SSN:</strong> <span id="currentAppSSN">666-15-3951</span>
-                        </div>
-
-                        <div style="font-weight: bold; margin-bottom: 8px;">Co-Applicant Information:</div>
-
-                        <div style="margin-bottom: 4px;">
-                          <strong>Name:</strong> <span id="currentCoAppName">Uyldqv w Bjqzhqq</span>
-                        </div>
-
-                        <div>
-                          <strong>SSN:</strong> <span id="currentCoAppSSN">666-42-4024</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- RIGHT: TARGET APP -->
-                    <div class="application-compare-col">
-                      <div style="font-weight: bold; font-size: 14px; margin-bottom: 15px;">
-                        Target App: <span id="targetAppId">23423423</span>
-                      </div>
-
-                      <div style="margin-bottom: 15px;">
-                        <div style="font-weight: bold; margin-bottom: 8px;">Applicant Information:</div>
-
-                        <div style="margin-bottom: 4px; display: flex; align-items: center;">
-                          <strong>Name:</strong>
-                          <span id="targetAppName" style="margin-left: 5px;">AMANDA CLEO</span>
-                          <i class="bi bi-x-circle-fill" style="font-size: 14px; margin-left: 8px; color: #d9534f;"></i>
-                        </div>
-
-                        <div style="margin-bottom: 4px; display: flex; align-items: center;">
-                          <strong>SSN:</strong>
-                          <span id="targetAppSSN" style="margin-left: 5px;">666-28-4361</span>
-                          <i class="bi bi-x-circle-fill" style="font-size: 14px; margin-left: 8px; color: #d9534f;"></i>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div> <!-- END OF ROW -->
-
-                  <!-- BUTTONS BELOW BOTH COLUMNS -->
-                  <div style="margin-top: 20px; display: flex; gap: 10px; position: relative;">
-                    <button id="executeMoveBtn" class="btn btn-success" onclick="showExecuteMoveBubble()">Move</button>
-                    <button class="btn btn-default" onclick="resetMoveWorkflow()">Reset</button>
-
-                    <!-- Place bubble INSIDE this wrapper -->
-                    <div id="executeMoveBubble" class="confirmation-bubble" style="display:none;">
-                      <div id="executeMoveText">Move documents to application?</div>
-                      <div style="margin-top: 10px; text-align: right;">
-                        <button class="btn btn-sm" style="background-color: #6c757d; color: white; margin-right: 5px;"
-                          onclick="cancelExecuteMove()">Cancel</button>
-                        <button class="btn btn-sm" style="background-color: #5cb85c; color: white;"
-                          onclick="confirmExecuteMove()">Confirm</button>
-                      </div>
-                    </div>
-                  </div>
+                  <span style="font-weight:700;">Classification Method:</span> Manual,
+                  <span style="font-weight:700;">Document Type:</span> Adverse Action Letter,
+                  <span style="font-weight:700;">Classification Status:</span>
+                  <span style="color:#27ae60;">Manual Classification</span>,
+                  Approved
                 </div>
+
+                <!-- File icon -->
+                <i class="bi bi-file-earmark-fill"
+                  style="font-size:15px; color:#111; position:absolute; right:16px; top:18px;"></i>
+
               </div>
             </div>
 
-            <div style="background: white; border: 1px solid #ddd;">
-              <table class="table table-striped" style="margin: 0;">
-                <thead style="background: #f5f5f5;">
-                  <tr>
-                    <th style="width: 40px; padding: 12px 8px; border-bottom: 2px solid #ddd;">
-                      <input id="approved-header-cb" type="checkbox" style="margin: 0;" title="Select/Deselect All">
-                    </th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold;">Document</th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold;">Uploaded Date</th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold;">Approved Date</th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold;">Approved By</th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold; text-align: right;">
-                      Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style="padding: 12px 8px; vertical-align: middle;">
-                      <input class="approved-row-cb" type="checkbox" style="margin: 0;" aria-label="Select NSA">
-                    </td>
-                    <td style="padding: 12px; vertical-align: middle;">NSA</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/14/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/15/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">Jimmy K. John</td>
-                    <td style="padding: 12px; vertical-align: middle; text-align: right;">
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">View</a>
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">Download</a>
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;"
-                        onclick="toggleNoteRow(this, 'approved', 1)">Notes</a>
-                      <a href="#" style="color: black; text-decoration: underline;">Deactivate</a>
-                    </td>
-                  </tr>
-                  <tr class="note-row" id="note-row-approved-1" style="display: none;">
-                    <td colspan="6" style="padding: 0; border: none;">
-                      <div class="note-content" id="note-content-approved-1">
-                        <!-- Note content will be populated by JavaScript -->
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 12px 8px; vertical-align: middle;">
-                      <input class="approved-row-cb" type="checkbox" style="margin: 0;"
-                        aria-label="Select Drivers License">
-                    </td>
-                    <td style="padding: 12px; vertical-align: middle;">Drivers License</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/14/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/15/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">Jimmy K. John</td>
-                    <td style="padding: 12px; vertical-align: middle; text-align: right;">
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">View</a>
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">Download</a>
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;"
-                        onclick="toggleNoteRow(this, 'approved', 2)">Notes</a>
-                      <a href="#" style="color: black; text-decoration: underline;">Deactivate</a>
-                    </td>
-                  </tr>
-                  <tr class="note-row" id="note-row-approved-2" style="display: none;">
-                    <td colspan="6" style="padding: 0; border: none;">
-                      <div class="note-content" id="note-content-approved-2">
-                        <!-- Note content will be populated by JavaScript -->
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 12px 8px; vertical-align: middle;">
-                      <input class="approved-row-cb" type="checkbox" style="margin: 0;"
-                        aria-label="Select Insurance Card">
-                    </td>
-                    <td style="padding: 12px; vertical-align: middle;">Insurance Card</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/14/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/15/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">Jimmy K. John</td>
-                    <td style="padding: 12px; vertical-align: middle; text-align: right;">
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">View</a>
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">Download</a>
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;"
-                        onclick="toggleNoteRow(this, 'approved', 3)">Notes</a>
-                      <a href="#" style="color: black; text-decoration: underline;">Deactivate</a>
-                    </td>
-                  </tr>
-                  <tr class="note-row" id="note-row-approved-3" style="display: none;">
-                    <td colspan="6" style="padding: 0; border: none;">
-                      <div class="note-content" id="note-content-approved-3">
-                        <!-- Note content will be populated by JavaScript -->
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <!-- Move Button -->
+            <div style="margin-top:20px;">
+              <button class="btn btn-default"
+                style="background:#efefef; border:1px solid #333; color:white; background-color: #555555; padding: 10px 20px;">
+                <i class="bi bi-copy"></i> Move Documents to New App
+              </button>
             </div>
+
           </div>
 
           <!-- Rejected Tab Content -->
           <div id="rejectedContent" style="display:none;">
-            <div style="margin-bottom: 20px; text-align: right;">
-              <div style="position: relative; display: inline-block; margin-right: 10px;">
-                <button class="btn btn-default" id="requestReuploadBtn" onclick="showRequestReuploadBubble()"
-                  style="border: 1px solid #2d5a2d; color: #2d5a2d; background-color: #d4e6d4; font-weight: bold;">Request
-                  Customer to
-                  Re-upload Rejected
-                  Documents</button>
-                <!-- Request Reupload Confirmation bubble -->
-                <div id="requestReuploadBubble" class="confirmation-bubble" style="display:none;">
-                  <div>Send re-upload request to customer for selected documents?</div>
-                  <div style="margin-top: 10px; text-align: right;">
-                    <button class="btn btn-sm" style="background-color: #6c757d; color: white; margin-right: 5px;"
-                      onclick="cancelRequestReupload()">Cancel</button>
-                    <button class="btn btn-sm" style="background-color: #5cb85c; color: white;"
-                      onclick="executeRequestReupload()">Confirm</button>
-                  </div>
-                </div>
+
+            <!-- REJECTED DOCUMENT CARD -->
+            <div class="card"
+              style="background:#fff; border-radius:3px; margin-top:12px; padding:0; border:1px solid #ccc;">
+
+              <!-- Header -->
+              <div class="card-header"
+                style="background:#555555; color:#fff; padding:10px 14px; border-radius:3px 3px 0 0; font-weight:700; font-size:14px;">
+                Other
               </div>
-              <div style="position: relative; display: inline-block;">
-                <button class="btn btn-default" id="returnToPendingBtn" onclick="showReturnToPendingBubble()"
-                  style="border: 1px solid #337ab7; color: #337ab7; background-color: #cce7ff; font-weight: bold;">Return
-                  to Pending
-                  Status</button>
-                <!-- Return to Pending Confirmation bubble -->
-                <div id="returnToPendingBubble" class="confirmation-bubble-right" style="display:none;">
-                  <div>Return selected documents to pending status for review?</div>
-                  <div style="margin-top: 10px; text-align: right;">
-                    <button class="btn btn-sm" style="background-color: #6c757d; color: white; margin-right: 5px;"
-                      onclick="cancelReturnToPending()">Cancel</button>
-                    <button class="btn btn-sm" style="background-color: #5cb85c; color: white;"
-                      onclick="executeReturnToPending()">Confirm</button>
-                  </div>
+
+              <!-- Body -->
+              <div class="doc-entry" style="padding:14px; font-size:14px; position:relative;">
+
+                <!-- Link & Metadata -->
+                <div style="display:inline-block; width:92%; line-height:20px;">
+
+                  <a href="#" style="font-weight:700; text-decoration:underline; color: black;">
+                    Kelley – 5588731 _a43de291-4b61-4e8…606-a525-b742f398c261.pdf
+                  </a>,
+                  Page(s) 1 (
+                  <span style="font-weight:700;">Received:</span>
+                  11-19-2025 11:00:45 PM )
+
+                  <br>
+
+                  <span style="font-weight:700;">Classification Method:</span> N/A,
+                  <span style="font-weight:700;">Document Type:</span> N/A,
+                  <span style="font-weight:700;">Classification Status:</span>
+                  <span style="color:#e74c3c; font-weight:700;">Not Classified</span>, Rejected
                 </div>
+
+                <!-- File Icon -->
+                <i class="bi bi-file-earmark-fill"
+                  style="font-size:15px; color:#111; position:absolute; right:16px; top:18px;"></i>
+
               </div>
             </div>
 
-            <div style="background: white; border: 1px solid #ddd;">
-              <table class="table table-striped" style="margin: 0;">
-                <thead style="background: #f5f5f5;">
-                  <tr>
-                    <th style="width: 40px; padding: 12px 8px; border-bottom: 2px solid #ddd;">
-                      <input id="rejected-header-cb" type="checkbox" style="margin: 0;" title="Select/Deselect All">
-                    </th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold;">Document</th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold;">Uploaded Date</th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold;">Rejected Date</th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold;">Rejected By</th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold;">Re-upload Request
-                      Sent</th>
-                    <th style="padding: 12px; border-bottom: 2px solid #ddd; font-weight: bold; text-align: right;">
-                      Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style="padding: 12px 8px; vertical-align: middle;">
-                      <input class="rejected-row-cb" type="checkbox" style="margin: 0;" aria-label="Select Document A">
-                    </td>
-                    <td style="padding: 12px; vertical-align: middle;">Document_A.pdf</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/14/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/15/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">Jimmy K. John</td>
-                    <td style="padding: 12px; vertical-align: middle; text-align: center;">
-                      <span
-                        style="background-color: #5cb85c; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">Yes</span>
-                    </td>
-                    <td style="padding: 12px; vertical-align: middle; text-align: right;">
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">View</a>
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">Download</a>
-                      <a href="#" style="color: black; text-decoration: underline;"
-                        onclick="toggleNoteRow(this, 'rejected', 1)">Notes</a>
-                    </td>
-                  </tr>
-                  <tr class="note-row" id="note-row-rejected-1" style="display: none;">
-                    <td colspan="7" style="padding: 0; border: none;">
-                      <div class="note-content" id="note-content-rejected-1">
-                        <!-- Note content will be populated by JavaScript -->
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 12px 8px; vertical-align: middle;">
-                      <input class="rejected-row-cb" type="checkbox" style="margin: 0;" aria-label="Select Document B">
-                    </td>
-                    <td style="padding: 12px; vertical-align: middle;">Document_B.pdf</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/14/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/15/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">Jimmy K. John</td>
-                    <td style="padding: 12px; vertical-align: middle; text-align: center;">
-                      <span
-                        style="background-color: #d9534f; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">No</span>
-                    </td>
-                    <td style="padding: 12px; vertical-align: middle; text-align: right;">
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">View</a>
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">Download</a>
-                      <a href="#" style="color: black; text-decoration: underline;"
-                        onclick="toggleNoteRow(this, 'rejected', 2)">Notes</a>
-                    </td>
-                  </tr>
-                  <tr class="note-row" id="note-row-rejected-2" style="display: none;">
-                    <td colspan="7" style="padding: 0; border: none;">
-                      <div class="note-content" id="note-content-rejected-2">
-                        <!-- Note content will be populated by JavaScript -->
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 12px 8px; vertical-align: middle;">
-                      <input class="rejected-row-cb" type="checkbox" style="margin: 0;" aria-label="Select Document C">
-                    </td>
-                    <td style="padding: 12px; vertical-align: middle;">Document_C.pdf</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/14/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">12/15/2025 12:30 AM</td>
-                    <td style="padding: 12px; vertical-align: middle;">Jimmy K. John</td>
-                    <td style="padding: 12px; vertical-align: middle; text-align: center;">
-                      <span
-                        style="background-color: #5cb85c; color: white; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold;">Yes</span>
-                    </td>
-                    <td style="padding: 12px; vertical-align: middle; text-align: right;">
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">View</a>
-                      <a href="#" style="color: black; text-decoration: underline; margin-right: 10px;">Download</a>
-                      <a href="#" style="color: black; text-decoration: underline;"
-                        onclick="toggleNoteRow(this, 'rejected', 3)">Notes</a>
-                    </td>
-                  </tr>
-                  <tr class="note-row" id="note-row-rejected-3" style="display: none;">
-                    <td colspan="7" style="padding: 0; border: none;">
-                      <div class="note-content" id="note-content-rejected-3">
-                        <!-- Note content will be populated by JavaScript -->
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <!-- Request Customer Button -->
+            <div style="margin-top:20px;">
+              <button class="btn btn-default" style="background:#555555; color:white; border:none; padding:10px 20px;">
+                Request Customer to Re-upload Rejected Documents
+              </button>
             </div>
+
           </div>
-
         </div>
       </div>
     </div>
@@ -974,6 +606,13 @@
 
           // Hide all content divs
           $('#pendingContent, #approvedContent, #rejectedContent').hide();
+
+          // Adjust height based on tab selected
+          if (tabText.includes('Pending')) {
+            $('#tabContentWrapper').css('min-height', '600px');
+          } else {
+            $('#tabContentWrapper').css('min-height', 'auto');
+          }
 
           // Show appropriate content based on tab
           if (tabText.includes('Pending')) {
@@ -1090,349 +729,6 @@
         // Handle cancel button click
         $('#cancelBtn').on('click', function () {
           resetAllUI();
-        });
-
-        // Confirmation bubble functions for Approved section
-        window.showMoveDocuments = function () {
-          const selectedCount = document.querySelectorAll('.approved-row-cb:checked').length;
-          if (selectedCount === 0) return;
-
-          // Update the title with selected count
-          const title = document.getElementById('moveDocumentsTitle');
-          title.textContent = `Move ${selectedCount} document(s) to a new application.`;
-
-          // Show the move section
-          const moveSection = document.getElementById('moveDocumentsSection');
-          moveSection.style.display = 'block';
-
-          // Focus on the input field
-          const targetAppInput = document.getElementById('targetApplicationId');
-          targetAppInput.focus();
-
-          // Scroll to the section
-          moveSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        };
-
-        window.validateApplication = function () {
-          const targetAppInput = document.getElementById('targetApplicationId');
-          const appId = targetAppInput.value.trim();
-
-          if (!appId) {
-            return;
-          }
-
-          // Update the target app ID in the comparison
-          document.getElementById('targetAppId').textContent = appId;
-
-          // Show the comparison section
-          document.getElementById('applicationComparisonSection').style.display = 'block';
-        };
-
-        window.resetMoveWorkflow = function () {
-          document.getElementById('targetApplicationId').value = '';
-          document.getElementById('applicationComparisonSection').style.display = 'none';
-        };
-
-        window.showExecuteMoveBubble = function () {
-          const selectedCount = document.querySelectorAll('.approved-row-cb:checked').length;
-          const targetAppId = document.getElementById('targetAppId').textContent;
-
-          // Update bubble text
-          document.getElementById('executeMoveText').textContent =
-            `Move ${selectedCount} document(s) to application ${targetAppId}?`;
-
-          const bubble = document.getElementById('executeMoveBubble');
-          bubble.style.display = 'block';
-          setTimeout(() => bubble.classList.add('show'), 10);
-        };
-
-        window.cancelExecuteMove = function () {
-          const bubble = document.getElementById('executeMoveBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-        };
-
-        window.confirmExecuteMove = function () {
-          const selectedCount = document.querySelectorAll('.approved-row-cb:checked').length;
-          const targetAppId = document.getElementById('targetAppId').textContent;
-
-          // Hide bubble
-          const bubble = document.getElementById('executeMoveBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-
-          // Hide move section
-          document.getElementById('moveDocumentsSection').style.display = 'none';
-
-          // Reset form
-          resetMoveWorkflow();
-
-          // Uncheck all selected documents
-          document.querySelectorAll('.approved-row-cb:checked').forEach(cb => cb.checked = false);
-
-          // Update button states
-          updateButtonStates('approved', 0);
-          document.getElementById('approved-selected').textContent = 'Selected: 0 of 3';
-          document.getElementById('approved-header-cb').checked = false;
-        };
-
-        window.showMoveDocumentsBubble = function () {
-          // Ensure move workflow panel is hidden first
-          document.getElementById('moveDocumentsSection').style.display = 'none';
-
-          const selectedCount = document.querySelectorAll('.approved-row-cb:checked').length;
-          document.getElementById('moveDocumentsText').textContent =
-            `Move ${selectedCount} selected document(s) to another application?`;
-
-          const bubble = document.getElementById('moveDocumentsBubble');
-          bubble.style.display = 'block';
-          setTimeout(() => bubble.classList.add('show'), 10);
-        };
-
-
-        window.cancelMoveDocuments = function () {
-          const bubble = document.getElementById('moveDocumentsBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-
-          // Also hide the move section if it's open
-          document.getElementById('moveDocumentsSection').style.display = 'none';
-          resetMoveWorkflow();
-        };
-
-        window.executeMoveDocuments = function () {
-          const bubble = document.getElementById('moveDocumentsBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-
-          // Show the detailed move workflow
-          showMoveDocuments();
-        };
-
-        window.showReturnToFaxesBubble = function () {
-          const selectedCount = document.querySelectorAll('.approved-row-cb:checked').length;
-          const bubble = document.getElementById('returnToFaxesBubble');
-          bubble.style.display = 'block';
-          setTimeout(() => bubble.classList.add('show'), 10);
-        };
-
-        window.cancelReturnToFaxes = function () {
-          const bubble = document.getElementById('returnToFaxesBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-        };
-
-        window.executeReturnToFaxes = function () {
-          const selectedCount = document.querySelectorAll('.approved-row-cb:checked').length;
-          const bubble = document.getElementById('returnToFaxesBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-
-          // Uncheck all and update states
-          document.querySelectorAll('.approved-row-cb:checked').forEach(cb => cb.checked = false);
-          updateButtonStates('approved', 0);
-          document.getElementById('approved-selected').textContent = 'Selected: 0 of 3';
-          document.getElementById('approved-header-cb').checked = false;
-        };
-
-        // Confirmation bubble functions for Rejected section
-        window.showRequestReuploadBubble = function () {
-          const selectedCount = document.querySelectorAll('.rejected-row-cb:checked').length;
-          const bubble = document.getElementById('requestReuploadBubble');
-          bubble.style.display = 'block';
-          setTimeout(() => bubble.classList.add('show'), 10);
-        };
-
-        window.cancelRequestReupload = function () {
-          const bubble = document.getElementById('requestReuploadBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-        };
-
-        window.executeRequestReupload = function () {
-          const selectedCount = document.querySelectorAll('.rejected-row-cb:checked').length;
-          const bubble = document.getElementById('requestReuploadBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-
-          // Uncheck all and update states
-          document.querySelectorAll('.rejected-row-cb:checked').forEach(cb => cb.checked = false);
-          updateButtonStates('rejected', 0);
-          document.getElementById('rejected-selected').textContent = 'Selected: 0 of 3';
-          document.getElementById('rejected-header-cb').checked = false;
-        };
-
-        window.showReturnToPendingBubble = function () {
-          const selectedCount = document.querySelectorAll('.rejected-row-cb:checked').length;
-          const bubble = document.getElementById('returnToPendingBubble');
-          bubble.style.display = 'block';
-          setTimeout(() => bubble.classList.add('show'), 10);
-        };
-
-        window.cancelReturnToPending = function () {
-          const bubble = document.getElementById('returnToPendingBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-        };
-
-        window.executeReturnToPending = function () {
-          const selectedCount = document.querySelectorAll('.rejected-row-cb:checked').length;
-          const bubble = document.getElementById('returnToPendingBubble');
-          bubble.classList.remove('show');
-          setTimeout(() => bubble.style.display = 'none', 300);
-
-          // Uncheck all and update states
-          document.querySelectorAll('.rejected-row-cb:checked').forEach(cb => cb.checked = false);
-          updateButtonStates('rejected', 0);
-          document.getElementById('rejected-selected').textContent = 'Selected: 0 of 3';
-          document.getElementById('rejected-header-cb').checked = false;
-        };
-
-        // Sample notes data
-        const notesData = {
-          approved: {
-            'NSA': 'Document verified successfully. All required signatures present and legible. Cross-referenced with customer application data - all information matches. Document quality excellent, no issues detected.',
-            'Drivers License': 'Valid driver\'s license verified through DMV database. Photo matches customer profile. Address information confirmed against application. No security features compromised.',
-            'Insurance Card': 'Insurance card verified with carrier. Policy active and in good standing. Coverage amounts meet lending requirements. Effective dates cover loan period.'
-          },
-          rejected: {
-            'Document_A.pdf': 'Document rejected due to poor image quality. Text is illegible and signatures cannot be verified. Customer needs to provide a clearer scan or photo.',
-            'Document_B.pdf': 'Social Security card appears to be altered or tampered with. Security features do not match authentic SSN card specifications. Possible forgery detected. Escalated to fraud prevention team.',
-            'Document_C.pdf': 'Bank statement is outdated - more than 90 days old. Current policy requires statements within 60 days of application.'
-          }
-        };
-
-        // Toggle note row functionality
-        window.toggleNoteRow = function (link, section, rowIndex) {
-          const noteRow = document.getElementById(`note-row-${section}-${rowIndex}`);
-          const noteContent = document.getElementById(`note-content-${section}-${rowIndex}`);
-
-          // Hide all other note rows
-          document.querySelectorAll('.note-row').forEach(row => {
-            if (row !== noteRow && row.style.display !== 'none') {
-              row.style.display = 'none';
-              const content = row.querySelector('.note-content');
-              if (content) {
-                content.classList.remove('show');
-              }
-            }
-          });
-
-          if (noteRow.style.display === 'none' || noteRow.style.display === '') {
-            // Show note row
-            noteRow.style.display = 'table-row';
-
-            // Get document name from the row
-            const row = link.closest('tr');
-            const docName = row.cells[1].textContent.trim();
-            const noteText = notesData[section] && notesData[section][docName];
-
-            // Populate content
-            noteContent.textContent = noteText || 'No notes available for this document.';
-
-            // Show with animation
-            setTimeout(() => {
-              noteContent.classList.add('show');
-            }, 10);
-          } else {
-            // Hide note row
-            noteContent.classList.remove('show');
-            setTimeout(() => {
-              noteRow.style.display = 'none';
-            }, 300);
-          }
-        };
-
-        // Checkbox functionality
-        function setupCheckboxes(section) {
-          const headerCheckbox = document.getElementById(`${section}-header-cb`);
-          const rowCheckboxes = document.querySelectorAll(`.${section}-row-cb`);
-          const selectedCounter = document.getElementById(`${section}-selected`);
-
-          if (!headerCheckbox) return;
-
-          function updateButtonStates(checkedCount) {
-            const isEnabled = checkedCount > 0;
-
-            if (section === 'approved') {
-              const moveBtn = document.getElementById('moveDocumentsBtn');
-              const returnBtn = document.getElementById('returnToFaxesBtn');
-
-              if (moveBtn) {
-                moveBtn.disabled = !isEnabled;
-                moveBtn.style.opacity = isEnabled ? '1' : '0.6';
-                moveBtn.onclick = isEnabled ? showMoveDocuments : null;
-              }
-              if (returnBtn) {
-                returnBtn.disabled = !isEnabled;
-                returnBtn.style.opacity = isEnabled ? '1' : '0.6';
-                returnBtn.onclick = isEnabled ? showReturnToFaxesBubble : null;
-              }
-            }
-
-            if (section === 'rejected') {
-              const reuploadBtn = document.getElementById('requestReuploadBtn');
-              const returnBtn = document.getElementById('returnToPendingBtn');
-
-              if (reuploadBtn) {
-                reuploadBtn.disabled = !isEnabled;
-                reuploadBtn.style.opacity = isEnabled ? '1' : '0.6';
-                reuploadBtn.onclick = isEnabled ? showRequestReuploadBubble : null;
-              }
-              if (returnBtn) {
-                returnBtn.disabled = !isEnabled;
-                returnBtn.style.opacity = isEnabled ? '1' : '0.6';
-                returnBtn.onclick = isEnabled ? showReturnToPendingBubble : null;
-              }
-            }
-          }
-
-          function updateHeaderState() {
-            const total = rowCheckboxes.length;
-            const checkedCount = Array.from(rowCheckboxes).filter(cb => cb.checked).length;
-
-            // Update header checkbox state
-            if (checkedCount === total && total > 0) {
-              headerCheckbox.checked = true;
-              headerCheckbox.indeterminate = false;
-            } else if (checkedCount > 0) {
-              headerCheckbox.checked = false;
-              headerCheckbox.indeterminate = true;
-            } else {
-              headerCheckbox.checked = false;
-              headerCheckbox.indeterminate = false;
-            }
-
-            // Update counter
-            if (selectedCounter) {
-              selectedCounter.textContent = `Selected: ${checkedCount} of ${total}`;
-            }
-
-            // Update button states
-            updateButtonStates(checkedCount);
-          }
-
-          // Header checkbox handler
-          headerCheckbox.addEventListener('change', function () {
-            rowCheckboxes.forEach(cb => {
-              cb.checked = this.checked;
-            });
-            updateHeaderState();
-          });
-
-          // Row checkbox handlers
-          rowCheckboxes.forEach(cb => {
-            cb.addEventListener('change', updateHeaderState);
-          });
-
-          // Initial update
-          updateHeaderState();
-        }
-
-        // Initialize checkboxes when DOM is loaded
-        $(document).ready(function () {
-          setupCheckboxes('approved');
-          setupCheckboxes('rejected');
         });
       });
     </script>
